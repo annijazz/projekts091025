@@ -1,0 +1,13 @@
+.container {
+    background-color: rgb(211, 211, 211);
+}
+body{
+    background-color: black !important;
+    height: 100%;
+    margin: 0;
+    padding: 0;
+}
+
+h1 {
+    color: blue;
+}
