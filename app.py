@@ -35,9 +35,9 @@ def skulpturas():
 @app.route('/pieminekli')
 def pieminekli():
     pieminekli = [
-        Piemineklis('piem1.jpg', 'Sunset', 'Haojans'),
-        Piemineklis('piem2.jpg', 'Sunset', 'Haojans'),
-        Piemineklis('piem3.jpg', 'Sunset', 'Haojans')
+        Piemineklis('piem1.jpg', 'Galva', 'Haojans'),
+        Piemineklis('piem2.jpg', 'Grandiozais Latvijas brīvības piemineklis', 'Haojans'),
+        Piemineklis('piem3.jpg', 'Paulas lucky charm', 'Haojans')
     ]
     return render_template('pieminekli.html', pieminekli=pieminekli)
 

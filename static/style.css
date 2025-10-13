@@ -35,14 +35,14 @@ h5{
 }
 
 .slider_image {
-    display: none; /* hide all images by default */
+    display: none; 
     width: 200px;
     height: 100px;
     margin: auto;
 }
 
 .slider_image.active {
-    display: block; /* only active image is visible */
+    display: block;
     width: 500px;
     height: 300px;
     margin: auto;
