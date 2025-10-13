@@ -4,31 +4,38 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Haojana Sjuņa muzejs</title>
-    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-sRIl4kxILFvY47J16cr9ZwB07vP4J8+LH7qKQnuqkuIAvNWLzeN8tE5YBujZqJLB" crossorigin="anonymous">
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
 </head>
 <body>
 
     {% include 'navbar.html' %}
     
     <div class="container">
-        <h1>Foto - Haojana Sjuņa darbi</h1>
-        <p>Šajā sadaļā ir atspoguļotas manas dabas fotogrāfijas, kas pauž manu skatījumu uz apkārtējo pasauli. Katrs attēls atspoguļo manu viedokli un sajūtas par dažādiem dzīves aspektiem.</p>
+        <br><br>
+        <h1 class="text-center">Haojana Sjuņa fotogrāfijas</h1><br>
+        <p>Šajā sadaļā ir atspoguļotas manas dabas un citu ainavu fotogrāfijas, kas pauž manu skatījumu uz apkārtējo pasauli. Katrs attēls atspoguļo manu viedokli un sajūtas par dažādiem dzīves aspektiem.
+
+        </p>
         
 
-        <div class="row">
-            <div class="col-md-4">
-                <img src="static/images/photo1.jpg" class="img-fluid" alt="Dabas ainava">
-            </div>
-            <div class="col-md-4">
-                <img src="static/images/photo2.jpg" class="img-fluid" alt="Mākslas fotogrāfija">
-            </div>
-            <div class="col-md-4">
-                <img src="static/images/photo3.jpg" class="img-fluid" alt="Portrets">
+        <div class="container mt-4">
+            <div class="row">
+                {% for foto in fotos %}
+                <div class="col-md-4 mb-4">
+                    <div class="card h-100">
+                    <img src="{{ url_for('static', filename=foto.image_url()) }}" class="card-img-top" alt="{{ foto.title }}">
+                    <div class="card-body">
+                        <h5 class="card-title">{{ foto.title }}</h5>
+                        <p class="card-text">{{ foto.artist }}</p>
+                    </div>
+                    </div>
+                </div>
+                {% endfor %}
             </div>
         </div>
     </div>
-    <script src="static/js/main.js"></script>
+    <script src="{{ url_for('static', filename='js/main.js') }}"></script>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.bundle.min.js"></script>
 </body>
 </html>

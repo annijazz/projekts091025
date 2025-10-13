@@ -1,14 +1,49 @@
 .container {
-    background-color: rgb(211, 211, 211);
+    background-color: rgb(255, 236, 184);
     min-height: 100vh
 }
 body{
-    background-color: black !important;
+    background-color: rgb(107, 60, 99) !important;
     height: 100%;
     margin: 0;
     padding: 0;
 }
 
 h1 {
-    color: blue;
+    color: rgb(170, 142, 66);
+}
+.navbar-brand{
+    font-weight: bold;
+}
+
+.navbar.my-navbar {
+    background-color: rgb(57, 32, 53) !important;
+}
+
+.intro_teksts{
+    color: rgb(54, 41, 3);
+}
+
+.card {
+    border: 10px solid rgb(57, 32, 53);
+    border-radius: 0px; 
+    background-color: rgb(245, 235, 243);
+}
+
+h5{
+    font-weight: bold;
+}
+
+.slider_image {
+    display: none; /* hide all images by default */
+    width: 200px;
+    height: 100px;
+    margin: auto;
+}
+
+.slider_image.active {
+    display: block; /* only active image is visible */
+    width: 500px;
+    height: 300px;
+    margin: auto;
 }
