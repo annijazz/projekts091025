@@ -4,35 +4,13 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Haojana Sjuņa muzejs</title>
-    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-sRIl4kxILFvY47J16cr9ZwB07vP4J8+LH7qKQnuqkuIAvNWLzeN8tE5YBujZqJLB" crossorigin="anonymous">
 </head>
 <body>
-    <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
-        <h1 class="navbar-brand">Haojana Sjuņa muzejs</h1>
-        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
-            <span class="navbar-toggler-icon"></span>
-        </button>
-        <div class="collapse navbar-collapse" id="navbarNav">
-            <ul class="navbar-nav">
-                <li class="nav-item active">
-                    <a class="nav-link" href="haha.html">Info par Haojanu Sjuņu</a>
-                </li>
-                <li class="nav-item">
-                    <a class="nav-link" href="#">Gleznas</a>
-                </li>
-                <li class="nav-item">
-                    <a class="nav-link" href="#">Skulptūras</a>
-                </li>
-                <li class="nav-item">
-                    <a class="nav-link" href="#">Pieminekļi</a>
-                </li>
-                <li class="nav-item">
-                    <a class="nav-link" href="#">Foto</a>
-                </li>
-            </ul>
-        </div>
-    </nav>
+
+    {% include 'navbar.html' %}
+
     <div class="container">
         <br><br><br>
         <h1>Sveicināti! Mani sauc Haojans Sjuņs.</h1> <br><br><br>
@@ -41,6 +19,7 @@
             Man patīk apgūt gan tradicionālas, latviešu un ķīniešu tehnikas, gan mūsdienu mākslas tehnikas, un esmu guvis iedvesmu no daudzām pasaules kultūrām, jo nāku no Ķīnas mazpilsētas - Pekinas. <br><br>
             Māksla man ir ne tikai hobijs, bet arī dzīves veids, kas ļauj man izpaust savas emocijas un domas. Es veidoju gleznas, skulptūras, pieminekļus un arī citus mākslas darbus, ieskaitot dabas fotogrāfijas, kas pauž manu skatījumu uz apkārtējo pasauli. <br><br>
             Man ir sapnis turpināt izglītoties mākslas jomā un kļūt par atzītu mākslinieku, kurš spēj iedvesmot citus ar savu radošumu un darbu.</p>
+
     </div>
     
     <script src="static/js/main.js"></script>
