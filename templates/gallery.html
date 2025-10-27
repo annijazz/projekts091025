@@ -12,7 +12,6 @@
     <nav>
       <a href="/" class="nav-link">Galvenā lapa</a>
       <a href="/gallery" class="nav-link">Galerija</a>
-      <a href="/photos" class="nav-link">Foto</a>
     </nav>
   </header>
 
@@ -36,6 +35,15 @@
   <footer>
     <p>© Haojana Sjuņa muzejs, 2025</p>
   </footer>
+
+  <div id="artwork-modal" class="modal hidden">
+    <div class="modal-content">
+      <span class="close-btn">×</span>
+      <img id="modal-img" src="" alt="">
+      <h3 id="modal-title"></h3>
+      <p id="modal-year"></p>
+    </div>
+  </div>
 
   <script src="/static/js/main.js"></script>
 </body>

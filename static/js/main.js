@@ -39,6 +39,23 @@ document.addEventListener("DOMContentLoaded", () => {
     }
   }
 
+ class Painting extends Artwork {
+    #year;
+
+    constructor(src, title, alt, tags = [], year) {
+      super(src, title, alt, tags);
+      this.#year = year;
+    }
+
+    get year() {
+      return this.#year;
+    }
+
+    toJSON() {
+      const base = super.toJSON();
+      return { ...base, year: this.#year};
+    }
+  }
 
   class Gallery {
     constructor(containerSelector) {
@@ -61,10 +78,29 @@ document.addEventListener("DOMContentLoaded", () => {
         card.innerHTML = `
           <img src="${art.src}" alt="${art.alt}" class="art-img" />
           <h3>${art.title}</h3>
-          <p class="tags">${art.tags.join(", ")}</p>
+          ${art.year ? `<p class="year">Gads: ${art.year}</p>` : ""}
         `;
         this.container.appendChild(card);
+
+        card.addEventListener("click", () => {
+            this.openModal(art);
+        });
       });
+    }
+    openModal(art) {
+        const modal = document.getElementById("artwork-modal");
+        const modalImg = document.getElementById("modal-img");
+        const modalTitle = document.getElementById("modal-title");
+        const modalYear = document.getElementById("modal-year");
+
+        modalImg.src = art.src;
+        modalTitle.textContent = art.title;
+        modalYear.textContent = art.year ? `Gads: ${art.year}` : "";
+
+        modal.classList.remove("hidden");
+
+        const closeBtn = document.querySelector(".close-btn");
+        closeBtn.onclick = () => modal.classList.add("hidden");
     }
 
     filterByTag(tag) {
@@ -109,16 +145,16 @@ document.addEventListener("DOMContentLoaded", () => {
 
     loadPaintings() {
       const paintings = [
-        new Artwork("/static/paintings/glezna1.png", "Glezna 1", "glezna", ["glezna"]),
-        new Artwork("/static/paintings/glezna2.jpg", "Glezna 2", "glezna", ["glezna"]),
-        new Artwork("/static/paintings/glezna3.png", "Glezna 3", "glezna", ["glezna"]),
-        new Artwork("/static/paintings/glezna4.png", "Glezna 4", "glezna", ["glezna"]),
-        new Artwork("/static/paintings/glezna5.jpg", "Glezna 5", "glezna", ["glezna"]),
-        new Artwork("/static/paintings/glezna6.png", "Glezna 6", "glezna", ["glezna"]),
-        new Artwork("/static/paintings/glezna7.jpg", "Glezna 7", "glezna", ["glezna", "foto"]),
-        new Artwork("/static/paintings/glezna8.jpg", "Glezna 8", "glezna", ["glezna", "foto"]),
-        new Artwork("/static/pieminekli/piem1.jpg", "Piemineklis 1", "piemineklis", ["piemineklis"]),
-        new Artwork("/static/pieminekli/piem2.jpg", "Piemineklis 2", "piemineklis", ["piemineklis"]),
+        new Painting("/static/paintings/glezna1.png", "Ziema", "glezna", ["glezna"], 2021),
+        new Painting("/static/paintings/glezna2.jpg", "Jett", "glezna", ["glezna"], 2007),
+        new Painting("/static/paintings/glezna3.png", "Putns", "glezna", ["glezna"], 2011),
+        new Painting("/static/paintings/glezna4.png", "Pilsēta", "glezna", ["glezna"], 2022),
+        new Painting("/static/paintings/glezna5.jpg", "Fēnikss", "glezna", ["glezna"], 2025),
+        new Painting("/static/paintings/glezna6.png", "Pašportrets", "glezna", ["glezna"], 2022),
+        new Painting("/static/paintings/glezna7.jpg", "Vaipers", "glezna", ["glezna", "foto"], 2021),
+        new Painting("/static/paintings/glezna8.jpg", "Joru", "glezna", ["glezna", "foto"], 2007),
+        new Artwork("/static/pieminekli/piem1.jpg", "Piemineklis", "piemineklis", ["piemineklis"]),
+        new Artwork("/static/pieminekli/piem2.jpg", "Brīvības piemineklis", "piemineklis", ["piemineklis"]),
         new Artwork("/static/pieminekli/piem3.jpg", "Piemineklis 3", "piemineklis", ["piemineklis"]),
         new Artwork("/static/sculptures/skulp1.jpg", "Piemineklis 4", "piemineklis", ["piemineklis"]),
         new Artwork("/static/sculptures/skulp2.jpg", "Piemineklis 5", "piemineklis", ["piemineklis"]),
